@@ -12,13 +12,15 @@ spec:
       labels:
         app: mysql
     spec:
+      imagePullSecrets:
+      - name: acr-secret
       containers:
       - name: mysql
         image: akasbiacrpfa.azurecr.io/mysql:latest
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: yasser1234
-        - name: MYSQL_DATABASE
-          value: templates
         ports:
         - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "yasser1234"
+        - name: MYSQL_DATABASE
+          value: "templates"
