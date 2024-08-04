@@ -1,0 +1,43 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+.dashboard {
+  padding: 20px;
+  margin-top: 80px; /* Garde la marge supérieure */
+  max-width: 2000px; /* Vous pouvez ajuster cette valeur selon vos besoins */
+}
+
+.dashboard h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  height: 310px; /* Définit la hauteur du tableau */
+  max-height: 600px; /* Définit la hauteur maximale du tableau */
+  overflow-y: auto; /* Ajoute un défilement vertical si le contenu dépasse */
+}
+
+.dashboard-table th, .dashboard-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.dashboard-table th {
+  background-color: #333;
+  color: #fff;
+}
+
+
+
+.percentage {
+  font-weight: bold;
+}
+
+.percentage.complete {
+  color: green;
+}
+

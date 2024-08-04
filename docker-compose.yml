@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend_cont
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=templates
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=yasser1234
+    networks:
+      - Smsnetwork
+
+  frontend:
+    build: ./front-end
+    container_name: front_cont
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front-end:/app
+    networks:
+      - Smsnetwork
+
+  db:
+    image: mysql:8.0
+    container_name: db_cont
+    environment:
+      - MYSQL_ROOT_PASSWORD=yasser1234
+      - MYSQL_DATABASE=templates
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
+    networks:
+      - Smsnetwork
+
+volumes:
+  db_data:
+
+networks:
+  Smsnetwork:
+    driver: bridge

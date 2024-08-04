@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.54a3013f.css",
+    "main.js": "/static/js/main.e0cd0e1f.js",
+    "static/media/grupologo.jpg": "/static/media/grupologo.fb0431389982bdadc1c9.jpg",
+    "index.html": "/index.html",
+    "main.54a3013f.css.map": "/static/css/main.54a3013f.css.map",
+    "main.e0cd0e1f.js.map": "/static/js/main.e0cd0e1f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54a3013f.css",
+    "static/js/main.e0cd0e1f.js"
+  ]
+}
