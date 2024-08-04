@@ -15,30 +15,10 @@ spec:
       containers:
       - name: mysql
         image: akasbiacrpfa.azurecr.io/mysql:latest
-        ports:
-        - containerPort: 3306
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "yasser1234"
+          value: yasser1234
         - name: MYSQL_DATABASE
-          value: "templates"
-        volumeMounts:
-        - name: mysql-initdb
-          mountPath: /docker-entrypoint-initdb.d
-      volumes:
-      - name: mysql-initdb
-        configMap:
-          name: mysql-initdb-config
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql
-spec:
-  ports:
-  - port: 3306
-    targetPort: 3306
-  selector:
-    app: mysql
+          value: templates
+        ports:
+        - containerPort: 3306
