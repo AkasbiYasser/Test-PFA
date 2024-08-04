@@ -46,7 +46,7 @@ class sms_generator:
     def connect_db(self):
         try:
             connection = connect(
-                host="db",
+                host="mysql",
                 user="root",
                 password="yasser1234",
                 database="templates"
