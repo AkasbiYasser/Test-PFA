@@ -6,7 +6,7 @@ const Dashboard = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://backend:5000/api/data')
+    axios.get('http://20.164.56.175/api/data')
       .then(response => {
         console.log(response.data);
         setData(response.data);

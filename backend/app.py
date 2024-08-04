@@ -7,7 +7,7 @@ import configparser
 app = Flask(__name__)
 
 # Autoriser les requêtes uniquement depuis http://localhost:3000
-CORS(app, origins=["http://localhost:3000", "http://backend:5000"])
+CORS(app, origins=["http://20.164.56.175"])
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
 @app.route('/api/upload', methods=['POST'])
