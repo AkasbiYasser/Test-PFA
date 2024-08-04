@@ -29,16 +29,13 @@ services:
       - Smsnetwork
 
   db:
-    image: mysql:8.0
+    build: ./database
     container_name: db_cont
     environment:
       - MYSQL_ROOT_PASSWORD=yasser1234
       - MYSQL_DATABASE=templates
     ports:
       - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./database:/docker-entrypoint-initdb.d
     networks:
       - Smsnetwork
 
@@ -48,3 +45,4 @@ volumes:
 networks:
   Smsnetwork:
     driver: bridge
+
