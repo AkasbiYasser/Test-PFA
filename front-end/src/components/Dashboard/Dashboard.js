@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import axios from 'axios';
 
+const API_URL = 'http://20.164.56.175';  // Utilisez l'IP de votre Ingress
+
 const Dashboard = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-     axios.get('/api/data')
+    axios.get(`${API_URL}/api/data`)
       .then(response => {
         console.log(response.data);
         setData(response.data);
