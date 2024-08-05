@@ -92,7 +92,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'argocd-token', variable: 'ARGOCD_AUTH_TOKEN')]) {
                         sh """
-                        argocd app sync sms-generator-app --server ${ARGOCD_SERVER} --auth-token $ARGOCD_AUTH_TOKEN --insecure
+                        argocd app sync generator-app-k8s --server ${ARGOCD_SERVER} --auth-token $ARGOCD_AUTH_TOKEN --insecure
                         """
                     }
                 }
