@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import axios from 'axios';
 
-const API_URL = 'http://20.164.56.175.nip.io/api/data'; // Mettez à jour avec l'URL de votre API
+const API_URL = 'http://20.164.56.175.nip.io/api/data'; 
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
