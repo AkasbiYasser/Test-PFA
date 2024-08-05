@@ -74,22 +74,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to AKS') {
-            steps {
-                script {
-                    withCredentials([file(credentialsId: 'aks-cluster', variable: 'KUBECONFIG')]) {
-                        sh '''
-                            export KUBECONFIG=$KUBECONFIG
-                            kubectl apply -f k8s/backend-deployment.yaml
-                            kubectl apply -f k8s/frontend-deployment.yaml
-                            kubectl apply -f k8s/mysql-deployment.yaml
-                        '''
-                    }
-                }
-            }
-        }
-      
-        stage('Sync with ArgoCD') {
+    stage('Sync with ArgoCD') {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'argocd-token', variable: 'ARGOCD_AUTH_TOKEN')]) {
@@ -101,6 +86,7 @@ pipeline {
             }
         }
     }
+    
     post {
         success {
             script {
