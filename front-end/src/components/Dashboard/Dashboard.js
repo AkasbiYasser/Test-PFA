@@ -17,6 +17,9 @@ const Dashboard = () => {
       }
     };
 
+    fetchData();
+  }, []);
+
   const calculatePercentage = (smsSent, totalSms) => {
     if (totalSms === 0) return "100.00";
     return smsSent > 0 ? ((totalSms - smsSent) / totalSms * 100).toFixed(2) : "100.00";
