@@ -2,21 +2,20 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import axios from 'axios';
 
-const API_URL = 'http://20.164.56.175.nip.io'; 
+const API_URL = 'http://20.164.56.175.nip.io/api/data'; // Mettez à jour avec l'URL de votre API
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_URL}/api/data`)
-      .then(response => {
-        console.log(response.data);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(API_URL);
         setData(response.data);
-      })
-      .catch(error => {
-        console.error('Erreur lors de la récupération des données!', error);
-      });
-  }, []);
+      } catch (error) {
+        console.error('Erreur lors de la récupération des données !', error);
+      }
+    };
 
   const calculatePercentage = (smsSent, totalSms) => {
     if (totalSms === 0) return "100.00";
