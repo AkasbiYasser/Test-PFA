@@ -68,9 +68,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'ACR', passwordVariable: 'ACR_PASSWORD', usernameVariable: 'ACR_USERNAME')]) {
                         sh 'docker login ${ACR_URL} -u ${ACR_USERNAME} -p ${ACR_PASSWORD}'
                         sh 'docker push ${ACR_URL}/backend:latest'
-                        
                         sh 'docker push ${ACR_URL}/frontend:latest'
-
                         sh 'docker push ${ACR_URL}/mysql:latest'
                     }
                 }
@@ -80,9 +78,12 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: 'aks-cluster', variable: 'KUBECONFIG')]) {
-                        sh 'kubectl apply -f k8s/backend-deployment.yaml --kubeconfig=$KUBECONFIG'
-                        sh 'kubectl apply -f k8s/frontend-deployment.yaml --kubeconfig=$KUBECONFIG'
-                        sh 'kubectl apply -f k8s/mysql-deployment.yaml --kubeconfig=$KUBECONFIG'
+                        sh '''
+                            export KUBECONFIG=$KUBECONFIG
+                            kubectl apply -f k8s/backend-deployment.yaml
+                            kubectl apply -f k8s/frontend-deployment.yaml
+                            kubectl apply -f k8s/mysql-deployment.yaml
+                        '''
                     }
                 }
             }
