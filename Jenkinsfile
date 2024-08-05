@@ -88,26 +88,7 @@ pipeline {
                 }
             }
         }
-        stage('Check ArgoCD Sync Status') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'argocd-token', variable: 'ARGOCD_AUTH_TOKEN')]) {
-                        def syncStatus = sh (
-                            script: """
-                                argocd app get generator-app-k8s --server ${ARGOCD_SERVER} --auth-token $ARGOCD_AUTH_TOKEN --insecure -o json | jq -r '.status.sync.status'
-                            """,
-                            returnStdout: true
-                        ).trim()
-                        if (syncStatus == "Synced") {
-                            currentBuild.result = 'SUCCESS'
-                        } else {
-                            currentBuild.result = 'FAILURE'
-                            error("Another sync operation is already in progress. Please try again later.")
-                        }
-                    }
-                }
-            }
-        }
+      
         stage('Sync with ArgoCD') {
             steps {
                 script {
